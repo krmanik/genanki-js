@@ -1,0 +1,137 @@
+<meta charset="utf8" />
+<html>
+
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!-- emscripten -->
+<script src="js/emscripten/emscriptenfs.js"></script>
+
+<!-- sqlite -->
+<script src='js/sql/sql.js'></script>
+
+<!-- anki -->
+<script src="js/anki/apkg_col.js"></script>
+<script src="js/anki/apkg_schema.js"></script>
+<script src="js/anki/deck.js"></script>
+<script src="js/anki/model.js"></script>
+<script src="js/anki/default.js"></script>
+<script src="js/anki/note.js"></script>
+<script src="js/anki/package.js"></script>
+<script src="js/anki/anki_hash.js"></script>
+<script src="js/anki/sha256.js"></script>
+
+<!-- zip .apkg -->
+<script src="js/jszip.min.js"></script>
+
+<!-- File saver -->
+<script src="js/filesaver/FileSaver.min.js"></script>
+
+<script src='js/index.js'></script>
+<script src="js/test.js"></script>
+
+<script src="js/fsimage.js"></script>
+<script src="demo.js"></script>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="https://github.com/infinyte7/genanki-js">genanki-js</a>
+    <div id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="changePage('example');">Run Example</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="changePage('csv_apkg');">CSV to APKG</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="run_example">
+
+    <div style="text-align: center;">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Select test example
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#" onclick="changeCode('code1');">Basic and reversed card</a>
+        <a class="dropdown-item" href="#" onclick="changeCode('code2');">Two notes</a>
+        <a class="dropdown-item" href="#" onclick="changeCode('code3');">Ten notes in loop</a>
+        <a class="dropdown-item" href="#" onclick="changeCode('code4');">Two Chinese notes</a>
+        <a class="dropdown-item" href="#" onclick="changeCode('code5');">Add image file</a>
+      </div>
+    </div>
+    </div>
+
+    <br>
+
+    <div style="text-align: center;">
+      <h3 id="codeTitle">Basic and reversed card</h3>
+    </div>
+
+    <br>
+
+    <div style="text-align: center;">
+      <textarea id="codeArea" style="margin: 0px; width: 640px; height: 490px;">
+var m = new Model({
+  name: "Basic (and reversed card)",
+  id: "1543634829843",
+  flds: [
+    { name: "Front" },
+    { name: "Back" }
+  ],
+  req: [
+    [ 0, "all", [ 0 ] ],
+    [ 1, "all", [ 1 ] ]
+  ],
+  tmpls: [
+    {
+      name: "Card 1",
+      qfmt: "{{Front}}",
+      afmt: "{{FrontSide}}\n\n<hr id=answer>\n\n{{Back}}",
+    },
+    {
+      name: "Card 2",
+      qfmt: "{{Back}}",
+      afmt: "{{FrontSide}}\n\n<hr id=answer>\n\n{{Front}}",
+    }
+  ],
+})
+                        
+var d = new Deck(1276438724672, "Test Deck")
+
+d.addNote(m.note(['this is front', 'this is back']))
+
+var p = new Package()
+p.addDeck(d)
+
+p.writeToFile('deck.apkg')       
+  </textarea>
+
+    </div>
+
+    <br>
+
+    <div style="text-align: center;">
+      <button type="button" class="btn btn-success" onclick="runCode();">Run</button>
+    </div>
+
+  </section>
+
+  <section id="csv_to_apkg">
+    <div>Under Construction</div>
+  </section>
+
+</body>
+
+</html>

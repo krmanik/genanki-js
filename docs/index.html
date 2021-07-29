@@ -1,36 +1,25 @@
-<meta charset="utf8" />
-<html>
-
-<!-- emscripten -->
-<script src="js/emscripten/emscriptenfs.js"></script>
-
-<!-- sqlite -->
-<script src='js/sql/sql.js'></script>
-
-<!-- anki -->
-<script src="js/anki/apkg_col.js"></script>
-<script src="js/anki/apkg_schema.js"></script>
-<script src="js/anki/deck.js"></script>
-<script src="js/anki/model.js"></script>
-<script src="js/anki/default.js"></script>
-<script src="js/anki/note.js"></script>
-<script src="js/anki/package.js"></script>
-<script src="js/anki/anki_hash.js"></script>
-<script src="js/anki/sha256.js"></script>
-
-<!-- zip .apkg -->
-<script src="js/jszip.min.js"></script>
-
-<!-- File saver -->
-<script src="js/filesaver/FileSaver.min.js"></script>
-
-<script src='js/index.js'></script>
-<script src="js/test.js"></script>
-
-<script src="js/fsimage.js"></script>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+</head>
 <body>
-  Output is in Javascript console
-</body>
+  <div id="app"></div>
 
+  <script>
+    window.$docsify = {
+      name: 'genanki-js',
+      loadSidebar: true,
+      loadNavbar: true,
+      auto2top: true
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+</body>
 </html>
