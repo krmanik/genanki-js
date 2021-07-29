@@ -1,0 +1,51 @@
+<meta charset="utf8" />
+<html>
+
+<!-- sqlite -->
+<script src='js/sql/sql.js'></script>
+
+<!-- anki -->
+<script src="js/anki/anki_hash.js"></script>
+<script src="js/anki/genanki.js"></script>
+<script src="js/anki/db.js"></script>
+
+<!-- zip .apkg -->
+<script src="js/jszip.min.js"></script>
+
+<!-- File saver -->
+<script src="js/filesaver/FileSaver.min.js"></script>
+
+<script src='js/index.js'></script>
+
+<body>
+
+  <div>
+    Add notes and export decks
+  </div>
+
+  <br>
+
+  <!-- Front Back -->
+  <div id="add-note">
+    <div>Front
+      <hr class="thin">
+      <textarea id="noteFront" type="text" placeholder="Front..." required
+        style="margin: 0px;width: 400px;height: 100px;"></textarea>
+    </div>
+
+    <div>Back
+      <hr class="thin">
+      <textarea id="noteBack" type="text" placeholder="Back..." required
+        style="margin: 0px;width: 400px;height: 100px;"></textarea>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <button onclick="addNote();">Add</button>
+    <button onclick="exportDeck();">Export</button>
+  </div>
+</body>
+
+</html>

@@ -52,6 +52,8 @@ class Package {
     }
 
     writeToFile(filename) {
+        // db is global sql database
+        // see index.js
         this.write(db)
 
         var zip = new JSZip();

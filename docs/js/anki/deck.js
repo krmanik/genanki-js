@@ -33,23 +33,14 @@
  *      along with this program.  If not, see <https://www.gnu.org/licenses/>.          *
  ****************************************************************************************/
 
-config = {
-    locateFile: filename => `js/sql/sql-wasm.wasm`
-}
+class Deck {
+    constructor(id, name) {
+        this.id = id
+        this.name = name
+        this.notes = []
+    }
 
-var db = null;
-initSqlJs(config).then(function (SQL) {
-    //Create the database
-    db = new SQL.Database();
-    db.run(APKG_SCHEMA);
-});
-
-
-function createNewDB() {
-    initSqlJs(config).then(function (SQL) {
-        //Create the database
-        db = new SQL.Database();
-        db.run(APKG_SCHEMA);
-        return db;
-    });
+    addNote(note) {
+        this.notes.push(note)
+    }
 }
