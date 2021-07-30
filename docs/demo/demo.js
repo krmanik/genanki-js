@@ -1,12 +1,13 @@
 function changePage(page) {
+    document.getElementById("exportMsg").innerHTML = "";
     switch (page) {
         case 'example':
-            document.getElementById("run_example").style.display = "unset";
+            document.getElementById("run_example").style.display = "block";
             document.getElementById("csv_to_apkg").style.display = "none";
             break;
         case 'csv_apkg':
             document.getElementById("run_example").style.display = "none";
-            document.getElementById("csv_to_apkg").style.display = "unset";
+            document.getElementById("csv_to_apkg").style.display = "block";
             break;
     }
 }
@@ -118,7 +119,7 @@ var m = new Model({
     ],
 })
 
-var d = new Deck(1347617346765, "hi")
+var d = new Deck(1347617346765, "Two notes")
 
 d.addNote(m.note(['hello', 'world']))
 d.addNote(m.note(['this is test', 'for anki']))
@@ -150,7 +151,7 @@ var m = new Model({
     ],
 })
 
-var d = new Deck(1347617346765, "hi")
+var d = new Deck(1347617346765, "Ten notes in loop")
 
 for (i = 0; i < 10; i++) {
     d.addNote(m.note(['front note ' + i, 'back note ' + i]))
@@ -217,7 +218,7 @@ var m = new Model({
     ],
 })
                     
-var d = new Deck(1347617346765, "hi")
+var d = new Deck(1347617346765, "Add image file")
 
 var imageFile = "favicon.ico";
 
@@ -234,3 +235,14 @@ fetch('favicon.ico').then(response => {
     p.addMedia(response.blob(), imageFile);
     p.writeToFile('deck.apkg')
 });`;
+
+
+
+function showSnackbar(msg) {
+    var x = document.getElementById("snackbar");
+
+    x.innerHTML = msg;
+    x.className = "show";
+
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}

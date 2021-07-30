@@ -52,8 +52,9 @@ class Package {
     }
 
     writeToFile(filename) {
-        // db is global sql database
-        // see index.js
+        var db = new SQL.Database();
+        db.run(APKG_SCHEMA);
+
         this.write(db)
 
         var zip = new JSZip();
@@ -125,11 +126,9 @@ class Package {
         const insert_cards = db.prepare(`INSERT INTO cards (id, nid, did, ord, mod, usn, type, queue, due, ivl, factor, reps, lapses, left, odue, odid, flags, data) 
         VALUES (null, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0, 0, 0, 0, 0, 0, '')`)
 
-        var note_id = -1;
+        var note_id = 1;
         for (const deck of this.decks) {
             for (const note of deck.notes) {
-                note_id++;
-
                 insert_notes.run(
                     [
                         note.guid,                  // guid
@@ -153,6 +152,7 @@ class Package {
                             0,                  // queue -1 for suspended
                         ])
                 }
+                note_id++;
             }
         }
     }

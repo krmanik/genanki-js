@@ -52,8 +52,9 @@ class Package {
     }
 
     writeToFile(filename) {
-        // db is global sql database
-        // see index.js
+        var db = new SQL.Database();
+        db.run(APKG_SCHEMA);
+
         this.write(db)
 
         var zip = new JSZip();

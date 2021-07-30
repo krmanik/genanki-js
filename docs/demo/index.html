@@ -40,17 +40,30 @@
 
 <script src="js/fsimage.js"></script>
 <script src="demo.js"></script>
+<script src="csv_to_apkg.js"></script>
+
+<link href="css/demo.css" rel="stylesheet">
 
 <body>
+
+
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="https://github.com/infinyte7/genanki-js">genanki-js</a>
-    <div id="navbarNavDropdown">
-      <ul class="navbar-nav">
+    <a class="navbar-brand" href="https://github.com/infinyte7/genanki-js"> genanki-js</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="nav-link" href="#" onclick="changePage('example');">Run Example</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" onclick="changePage('csv_apkg');">CSV to APKG</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="turnOnDevTools();">Dev tools</a>
         </li>
       </ul>
     </div>
@@ -128,10 +141,84 @@ p.writeToFile('deck.apkg')
 
   </section>
 
-  <section id="csv_to_apkg">
-    <div>Under Construction</div>
+  <section id="csv_to_apkg" style="display: none;">
+    <div class="card" style="margin: 10px;">
+      <div class="card-body" style="text-align: justify">
+        <div>
+          <h4>Generate decks from csv and tsv files</h4>
+        </div>
+        <div>
+          1. Import csv or tsv file
+        </div>
+        <div>
+          2. Enter fields name, and select fields to be added to front back or both
+        </div>
+        <div>
+          3. Export deck
+        </div>
+        <div>
+          <b>Note:</b> If downloaded file name ends with <i>.zip</i> then remove it and make extension of file
+          <i>.apkg</i>
+          <div>
+            For e.g. <i>Export-Deck.apkg.zip</i> ---> <i>Export-Deck.apkg</i>
+          </div>
+        </div>
+        <div>
+          <b>4. Dev tools can be used to check if there any error in exporting decks.</b>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card" style="margin: 10px;">
+      <div class="card-body">
+        <h4>Select a CSV/TSV file</h4>
+        <div class="form-group">
+          <input type="file" class="form-control-file" onchange="inputFile();" id="file">
+        </div>
+
+        <div style="padding-top: 10px; padding-bottom: 10px;">
+          <h5 style="display: inline;">Fields Separated By
+            <select id="fieldSeparatedBy" class="select-new">
+              <option value="tab">TAB</option>
+              <option value="comma">COMMA</option>
+            </select>
+          </h5>
+        </div>
+
+        <div type="button" class="btn btn-primary" onclick="importFile()">Import</div>
+      </div>
+
+      <div id="firstEntry"></div>
+    </div>
+
+
+    <div id="fields-card" style="display: none;">
+      <div class="card" style="margin: 10px;">
+
+        <div class="card-body">
+
+          <div>
+            <label for='deckName'><h4>Enter Deck Name</h4></label>
+            <input id='deckName' type='text'></input>
+          </div>
+
+          <br>
+
+          <div id="fields-msg"></div>
+          <div id="fields"></div>
+
+          <div type="button" class="btn btn-success" onclick="exportDeck()">Export
+          </div>
+
+          <div id="exportMsg"></div>
+
+        </div>
+      </div>
+    </div>
   </section>
 
+  <div id="snackbar"></div>
 </body>
 
 </html>

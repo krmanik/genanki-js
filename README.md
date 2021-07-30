@@ -27,22 +27,24 @@ genanki.js      // for creating and exporting anki package file
 <script src="js/jszip.min.js"></script>
 ```
 
-3. Create a `db` global variable and run sql `APKG_SCHEMA` (may be added to index.js)
+3. Create a `SQL` global variable (may be added to index.js)
 ```js
-// change path of sql-wasm.wasm for filename
+// The `initSqlJs` function is globally provided by all of the main dist files if loaded in the browser.
+// We must specify this locateFile function if we are loading a wasm file from anywhere other than the current html page's folder.
 config = {
     locateFile: filename => `js/sql/sql-wasm.wasm`
 }
 
-var db = null;
-initSqlJs(config).then(function (SQL) {
+var SQL;
+initSqlJs(config).then(function (sql) {
     //Create the database
-    db = new SQL.Database();
-    db.run(APKG_SCHEMA);
+    SQL = sql;
 });
 ```
 
 4. Now use following `Examples` to generate and export decks.
+
+*View more examples here [Examples](https://infinyte7.github.io/genanki-js/demo/index.html)*
 
 # Examples
 ```js
