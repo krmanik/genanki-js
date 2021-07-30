@@ -66,8 +66,6 @@ class Package {
 
         const media_info = {}
 
-        // read file from emiscripten FS, emiscripten returns Uint8Array
-
         this.media.forEach((m, i) => {
             if (m.filename != null) {
                 zip.file(i.toString(), m.filename)
