@@ -1,6 +1,8 @@
 <meta charset="utf8" />
 <html>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
   integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -44,16 +46,18 @@
 
 <link href="css/demo.css" rel="stylesheet">
 
+<link rel="stylesheet" href="js/codemirror/codemirror.css">
+<script src="js/codemirror/codemirror.js"></script>
+<script src="js/codemirror/javascript.js"></script>
+
 <body>
-
-
-
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="https://github.com/infinyte7/genanki-js"> genanki-js</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -94,8 +98,8 @@
 
     <br>
 
-    <div style="text-align: center;">
-      <textarea id="codeArea" style="margin: 0px; width: 640px; height: 490px;">
+    <div style="text-align: left; width: 90%; margin: 0 auto; border: solid 1px #555;">
+      <textarea id="codeArea">
 var m = new Model({
   name: "Basic (and reversed card)",
   id: "1543634829843",
@@ -138,6 +142,8 @@ p.writeToFile('deck.apkg')
     <div style="text-align: center;">
       <button type="button" class="btn btn-success" onclick="runCode();">Run</button>
     </div>
+
+    <div id="run_message"></div>
 
   </section>
 
@@ -199,7 +205,9 @@ p.writeToFile('deck.apkg')
         <div class="card-body">
 
           <div>
-            <label for='deckName'><h4>Enter Deck Name</h4></label>
+            <label for='deckName'>
+              <h4>Enter Deck Name</h4>
+            </label>
             <input id='deckName' type='text'></input>
           </div>
 
@@ -219,6 +227,20 @@ p.writeToFile('deck.apkg')
   </section>
 
   <div id="snackbar"></div>
+
+  <script>
+    var codeArea = document.getElementById('codeArea');
+    var editor = CodeMirror.fromTextArea(codeArea, {
+      lineNumbers: true,
+      mode: 'javascript',
+      viewportMargin: Infinity,
+      indentWithTabs: true,
+      smartIndent: true,
+      lineNumbers: true,
+      matchBrackets: true,
+      autofocus: true,
+    });
+  </script>
 </body>
 
 </html>

@@ -165,23 +165,3 @@ function exportDeck(db) {
     }
 
 }
-
-var isInit = false;
-var isShownDevTools = false;
-function turnOnDevTools() {
-    if (!isInit) {
-        isInit = true;
-        var script = document.createElement('script');
-        script.src = "//cdn.jsdelivr.net/npm/eruda";
-        document.body.appendChild(script);
-        script.onload = function () { eruda.init(); eruda.show(); }
-    }
-
-    if (isShownDevTools) {
-        isShownDevTools = false;
-        eruda.hide();
-    } else {
-        isShownDevTools = true;
-        eruda.show();
-    }
-}

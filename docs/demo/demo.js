@@ -12,10 +12,39 @@ function changePage(page) {
     }
 }
 
+
+var isInit = false;
+var isShownDevTools = false;
+function turnOnDevTools() {
+
+    if (!isInit) {
+        isInit = true;
+        var script = document.createElement('script');
+        script.src = "js/eruda.js";
+        document.body.appendChild(script);
+        script.onload = function () {
+            eruda.init();
+            eruda.show();
+        }
+    }
+
+    if (isShownDevTools) {
+        isShownDevTools = false;
+        eruda.hide();
+
+        document.getElementById("run_example").style.paddingBottom = "0%";
+        document.getElementById("csv_to_apkg").style.paddingBottom = "0%";
+    } else {
+        isShownDevTools = true;    
+        eruda.show();
+        
+        document.getElementById("run_example").style.paddingBottom = "50%";
+        document.getElementById("csv_to_apkg").style.paddingBottom = "50%";
+    }
+}
+
 // https://stackoverflow.com/questions/13243563/execute-javascript-from-textarea
 function runCode() {
-    var el = document.getElementById('codeArea');
-    var scriptText = el.value;
     var oldScript = document.getElementById('scriptContainer');
     var newScript;
 
@@ -25,34 +54,35 @@ function runCode() {
 
     newScript = document.createElement('script');
     newScript.id = 'scriptContainer';
-    newScript.text = el.value;
+
+    // get code text from code mirror
+    newScript.text = editor.getValue();
     document.body.appendChild(newScript);
 }
 
 
 function changeCode(code) {
-    var textArea = document.getElementById("codeArea");
     var codeTitle = document.getElementById("codeTitle");
 
     switch (code) {
         case "code1":
-            textArea.value = code1;
+            editor.setValue(code1);
             codeTitle.innerHTML = "Basic and reversed card";
             break;
         case "code2":
-            textArea.value = code2;
+            editor.setValue(code2);
             codeTitle.innerHTML = "Two notes";
             break;
         case "code3":
-            textArea.value = code3;
+            editor.setValue(code3);
             codeTitle.innerHTML = "Ten notes in loop";
             break;
         case "code4":
-            textArea.value = code4;
+            editor.setValue(code4);
             codeTitle.innerHTML = "Two Chinese notes";
             break;
         case "code5":
-            textArea.value = code5;
+            editor.setValue(code5);
             codeTitle.innerHTML = "Add image file";
             break;
     }
@@ -61,8 +91,7 @@ function changeCode(code) {
 /**
  * Basic and reversed card
  */
-var code1 = String.raw`
-var m = new Model({
+var code1 = String.raw`var m = new Model({
     name: "Basic (and reversed card)",
     id: "1543634829843",
     flds: [
@@ -99,8 +128,7 @@ var m = new Model({
 /**
  * Two notes
  */
-var code2 = String.raw`
-var m = new Model({
+var code2 = String.raw`var m = new Model({
     name: "Basic",
     id: "1542906796044",
     flds: [
@@ -131,8 +159,7 @@ p.writeToFile('deck.apkg')`;
 /**
  * Ten notes in loop
  */
-var code3 = String.raw`
-var m = new Model({
+var code3 = String.raw`var m = new Model({
     name: "Basic",
     id: "1542906796044",
     flds: [
@@ -164,8 +191,7 @@ p.writeToFile('deck.apkg')`;
 /**
  * Two Chinese notes
  */
-var code4 = String.raw`
-var m = new Model({
+var code4 = String.raw`var m = new Model({
     name: "Basic",
     id: "1542906796045",
     flds: [
@@ -198,8 +224,7 @@ p.writeToFile('chinese-deck.apkg')`;
 /**
  * Add image file
  */
-var code5 = String.raw`
-var m = new Model({
+var code5 = String.raw`var m = new Model({
     name: "Basic Test",
     id: "3457826374725",
     flds: [
@@ -235,7 +260,6 @@ fetch('favicon.ico').then(response => {
     p.addMedia(response.blob(), imageFile);
     p.writeToFile('deck.apkg')
 });`;
-
 
 
 function showSnackbar(msg) {
