@@ -1,3 +1,15 @@
+/**
+ * [genanki]{@link https://github.com/kerrickstaley/genanki}
+ * @copyright Copyright (c) Kerrick Staley 2021
+ * @license The MIT License
+ * 
+ * 
+ * [genanki-js]{@link https://github.com/infinyte7/genanki-js}
+ * @copyright Copyright (c) 2021 Mani
+ * @license AGPL-3.0 License
+ */
+
+
 BASE91_TABLE = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
     't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
