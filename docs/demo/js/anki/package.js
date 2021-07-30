@@ -124,7 +124,6 @@ class Package {
         const insert_cards = db.prepare(`INSERT INTO cards (id, nid, did, ord, mod, usn, type, queue, due, ivl, factor, reps, lapses, left, odue, odid, flags, data) 
         VALUES (null, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0, 0, 0, 0, 0, 0, '')`)
 
-        var note_id = 1;
         for (const deck of this.decks) {
             for (const note of deck.notes) {
                 insert_notes.run(
@@ -138,6 +137,9 @@ class Package {
                         0,                          // sfld
                     ])
 
+                var rowID = db.exec("select last_insert_rowid();")
+                var note_id = rowID[0]['values'][0][0];
+
                 for (const card_ord of note.cards) {
                     insert_cards.run(
                         [
@@ -150,7 +152,6 @@ class Package {
                             0,                  // queue -1 for suspended
                         ])
                 }
-                note_id++;
             }
         }
     }
