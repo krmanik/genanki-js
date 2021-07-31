@@ -7,6 +7,10 @@ Fork and download this repository. The `sample` folder contains all necessary fi
 # Documentation
 View [Documentation](https://infinyte7.github.io/genanki-js)
 
+# CSV/TSV to Anki Package
+Visit page and select `CSV to APKG` from top menu.<br>
+[CSV to APKG](https://infinyte7.github.io/genanki-js/demo/index.html#)
+
 # Set Up a new project from scratch
 1. Download and copy these three files from `dist` folder and add to the project
 ```js
