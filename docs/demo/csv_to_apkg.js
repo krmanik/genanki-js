@@ -86,7 +86,6 @@ function importFile() {
 
 
 function exportDeck() {
-    // type conversion from javascript to python
     var field;
     var fields = [];
 
