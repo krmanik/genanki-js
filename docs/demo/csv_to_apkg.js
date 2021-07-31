@@ -50,15 +50,15 @@ function importFile() {
                 fields += `<div  style='margin: 10px;'><div style="display: inline;">
                 <label for='field`+ i + `'>Field ` + j + `</label>
                 <input id='field`+ i + `' type='text'></input>
-                
-                <div style="display: inline; margin-left: 10px;">
+                <br>
+                <div style="display: inline;">
                   <input class="form-check-input" type="checkbox" value="" id="checkFront`+ i + `">
                   <label class="form-check-label" for="checkFront`+ i + `">
                     Front
                   </label>
                 </div>
           
-                  <div style="display: inline; margin-left: 10px;">
+                  <div style="display: inline; margin-left: 20px;">
                   <input class="form-check-input" type="checkbox" value="" id="checkBack`+ i + `">
                   <label class="form-check-label" for="checkBack`+ i + `">
                     Back
@@ -66,6 +66,7 @@ function importFile() {
                 </div>
               </div>
               </div>
+              <br>
               `
             }
 
