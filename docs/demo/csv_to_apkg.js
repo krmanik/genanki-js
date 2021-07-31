@@ -85,7 +85,7 @@ function importFile() {
 }
 
 
-function exportDeck(db) {
+function exportDeck() {
     // type conversion from javascript to python
     var field;
     var fields = [];
@@ -149,10 +149,32 @@ function exportDeck(db) {
         const d = new Deck(1347617346765, deckName)
 
         var lines = content.split("\n");
+        var notAddedCount = 0;
+        var addedCount = 0;
+        var notAddedTxt = "";
         for (l of lines) {
             // console.log(l);
             var noteData = l.split("\t");
-            d.addNote(m.note(noteData))
+
+            if (noteData.length == fieldsCount) {
+                addedCount++;
+                d.addNote(m.note(noteData))
+            } else {
+                notAddedCount++;
+                notAddedTxt += l + "\n";
+                showSnackbar(notAddedCount + " card not added. View notAdded.txt files");
+            }
+
+            document.getElementById("exportMsg").innerHTML = addedCount + " card added and exporetd to the decks";
+        }
+
+        // not added text
+        if (notAddedTxt.trim() != "") {
+            var filename = "notAdded.txt";
+            var blob = new Blob([notAddedTxt], {
+                type: "text/plain;charset=utf-8"
+            });
+            setTimeout(function(){ saveAs(blob, filename); }, 500);
         }
 
         const p = new Package()
