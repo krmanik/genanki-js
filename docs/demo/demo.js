@@ -1,3 +1,7 @@
+window.onload = function() {
+    changePage("csv_apkg");
+}
+
 function changePage(page) {
     document.getElementById("exportMsg").innerHTML = "";
     switch (page) {
