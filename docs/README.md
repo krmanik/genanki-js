@@ -32,7 +32,7 @@ Fork and download [this](https://github.com/infinyte7/genanki-js) repository. Th
 
 #### 3. Create a `SQL` global variable (may be added to index.js)
 
->Note: The `SQL` variable is used in [package.js#L57](https://github.com/infinyte7/genanki-js/blob/main/genanki/package.js#L57).
+>Note: The `SQL` variable is used in [package.js#L20](https://github.com/infinyte7/genanki-js/blob/main/genanki/package.js#L20).
 
 ```js
 // The `initSqlJs` function is globally provided by all of the main dist files if loaded in the browser.

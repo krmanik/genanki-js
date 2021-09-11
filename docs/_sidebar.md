@@ -9,5 +9,6 @@
     - [Two notes](examples.md#two-notes)
     - [Ten notes in loop](examples.md#ten-notes-in-loop)
     - [Two Chinese notes](examples.md#two-chinese-notes)
-    - [Add image file](examples.md#add-image-file)    
+    - [Add image file](examples.md#add-image-file)
+    - [Add tags to notes](examples?id=add-tags-to-notes)
 - [License](License.md)
