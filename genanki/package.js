@@ -126,13 +126,14 @@ class Package {
 
         for (const deck of this.decks) {
             for (const note of deck.notes) {
+                var tags = note.tags == null ? '' : note.tags.join(' ')
                 insert_notes.run(
                     [
                         note.guid,                  // guid
                         note.model.props.id,        // mid
                         (+now / 1000) | 0,          // mod
                         -1,                         // usn
-                        '',                         // tags
+                        tags,                         // tags
                         note.fields.join('\x1f'),   //flds
                         0,                          // sfld
                     ])

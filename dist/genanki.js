@@ -29,12 +29,12 @@ class Model {
         this.props.flds.forEach(f => { this.fieldNameToOrd[f.name] = f.ord })
     }
 
-    note(fields, guid = null) {
+    note(fields, tags, guid = null) {
         if (Array.isArray(fields)) {
             if (fields.length !== this.props.flds.length) {
                 throw new Error(`Expected ${this.props.flds.length} fields for model '${this.props.name}' but got ${fields.length}`)
             }
-            return new Note(this, fields, guid)
+            return new Note(this, fields, tags, guid)
         } else {
             const field_names = Object.keys(fields)
             const fields_list = []
@@ -43,7 +43,7 @@ class Model {
                 if (ord == null) throw new Error(`Field '${field_name}' does not exist in the model`)
                 fields_list[ord] = fields[field_name]
             })
-            return new Note(this, fields_list, guid)
+            return new Note(this, fields_list, tags, guid)
         }
     }
 }
@@ -372,13 +372,14 @@ class Package {
 
         for (const deck of this.decks) {
             for (const note of deck.notes) {
+                var tags = note.tags == null ? '' : note.tags.join(' ')
                 insert_notes.run(
                     [
                         note.guid,                  // guid
                         note.model.props.id,        // mid
                         (+now / 1000) | 0,          // mod
                         -1,                         // usn
-                        '',                         // tags
+                        tags,                       // tags
                         note.fields.join('\x1f'),   //flds
                         0,                          // sfld
                     ])

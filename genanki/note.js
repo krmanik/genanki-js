@@ -34,9 +34,10 @@
  ****************************************************************************************/
 
 class Note {
-    constructor(model, fields, guid = null) {
+    constructor(model, fields, tags = null, guid = null) {
         this.model = model
         this.fields = fields
+        this.tags = tags
         this._guid = guid
     }
 
