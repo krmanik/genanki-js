@@ -13,12 +13,12 @@ class Model {
         this.props.flds.forEach(f => { this.fieldNameToOrd[f.name] = f.ord })
     }
 
-    note(fields, guid = null) {
+    note(fields, tags, guid = null) {
         if (Array.isArray(fields)) {
             if (fields.length !== this.props.flds.length) {
                 throw new Error(`Expected ${this.props.flds.length} fields for model '${this.props.name}' but got ${fields.length}`)
             }
-            return new Note(this, fields, guid)
+            return new Note(this, fields, tags, guid)
         } else {
             const field_names = Object.keys(fields)
             const fields_list = []
@@ -205,9 +205,10 @@ class Deck {
 }
 
 class Note {
-    constructor(model, fields, guid = null) {
+    constructor(model, fields, tags = null, guid = null) {
         this.model = model
         this.fields = fields
+        this.tags = tags
         this._guid = guid
     }
 
@@ -356,13 +357,14 @@ class Package {
 
         for (const deck of this.decks) {
             for (const note of deck.notes) {
+                var tags = note.tags == null ? '' : note.tags.join(' ')
                 insert_notes.run(
                     [
                         note.guid,                  // guid
                         note.model.props.id,        // mid
                         (+now / 1000) | 0,          // mod
                         -1,                         // usn
-                        '',                         // tags
+                        tags,                       // tags
                         note.fields.join('\x1f'),   //flds
                         0,                          // sfld
                     ])
