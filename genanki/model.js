@@ -8,6 +8,7 @@ class Model {
             ...props,
             flds: props.flds.map((f, i) => ({ ...defaultField, ord: i, ...f })),
             tmpls: props.tmpls.map((t, i) => ({ ...defaultTemplate, ord: i, name: `Card ${i + 1}`, ...t })),
+            mod: new Date().getTime()
         }
         this.fieldNameToOrd = {}
         this.props.flds.forEach(f => { this.fieldNameToOrd[f.name] = f.ord })
