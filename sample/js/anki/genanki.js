@@ -27,7 +27,7 @@ class Model {
                 if (ord == null) throw new Error(`Field '${field_name}' does not exist in the model`)
                 fields_list[ord] = fields[field_name]
             })
-            return new Note(this, fields_list, guid)
+            return new Note(this, fields_list, tags, guid)
         }
     }
 }
