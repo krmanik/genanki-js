@@ -75,7 +75,7 @@ the following fields.
   See the [Anki template documentation][anki-cloze-template-docs] for more on
   cloze template formatting. Cloze models can only have one template.
 
-#### `model.note(fieldValues, [guid])`
+#### `model.note(fieldValues, [tags], [guid])`
 
 Create a note using this model.
 
@@ -83,6 +83,7 @@ Create a note using this model.
   `fieldValues` is an array, the order of fields will be matched with the order
   of the `flds` in the model. If `fieldValues` is an object, the keys must be
   the names of fields in the model.
+- `tags` is an array, the array will be joined with space separated values in `Package`
 - `guid` string _(optional)_ - a stable, unique identifier for this note. When
   re-importing an updated version of this note, Anki will replace notes with
   matching identifiers. Defaults to a hash of the field values.

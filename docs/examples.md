@@ -190,3 +190,41 @@ async function addImage() {
 }
 
 ```
+
+### Add tags to notes
+```js
+var m = new Model({
+  name: "Basic (and reversed card) with tags",
+  id: "1543634829848",
+  flds: [
+    { name: "Front" },
+    { name: "Back" }
+  ],
+  req: [
+    [ 0, "all", [ 0 ] ],
+    [ 1, "all", [ 1 ] ]
+  ],
+  tmpls: [
+    {
+      name: "Card 1",
+      qfmt: "{{Front}}",
+      afmt: "{{FrontSide}}\n\n<hr id=answer>\n\n{{Back}}",
+    },
+    {
+      name: "Card 2",
+      qfmt: "{{Back}}",
+      afmt: "{{FrontSide}}\n\n<hr id=answer>\n\n{{Front}}",
+    }
+  ],
+})
+                        
+var d = new Deck(1276438724687, "Test Deck with Tags")
+
+d.addNote(m.note(['this is front', 'this is back'], ['test_tag1', 'test_tag2']))
+
+var p = new Package()
+p.addDeck(d)
+
+p.writeToFile('deck.apkg')
+
+```
