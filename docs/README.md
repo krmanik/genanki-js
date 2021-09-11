@@ -8,11 +8,9 @@ Fork and download [this](https://github.com/infinyte7/genanki-js) repository. Th
 
 
 # Set Up a new project from scratch
-#### 1. Download and copy these three files from  [dist](https://github.com/infinyte7/genanki-js/tree/main/dist) folder and add to the project
+#### 1. Download `genanki.js` from  [dist](https://github.com/infinyte7/genanki-js/tree/main/dist) folder and add to the project
 
 ```
-anki_hash.js    // used for generating id
-db.js           // used for creating global db variable using sql.js
 genanki.js      // for creating and exporting anki package file
 ```
 
@@ -56,8 +54,6 @@ initSqlJs(config).then(function (sql) {
 └── sample
     ├── js
     │   ├── anki
-    │   │     ├── anki_hash.js
-    │   │     ├── db.js
     │   │     └── genanki.js
     │   ├── filesaver
     │   │     ├── FileSaver.min.js
