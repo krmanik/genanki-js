@@ -13,8 +13,9 @@ Visit page and select `CSV to APKG` from top menu.<br>
 
 # Set Up a new project from scratch
 1. Download `genanki.js` from `dist` folder and add to the project
-```js
-genanki.js      // for creating and exporting anki package file
+```html
+<!-- for creating and exporting anki package file -->
+<script src='genanki.js'></script>
 ```
 
 2. Add [sql.js](https://github.com/sql-js/sql.js), [FileSaver.js](https://github.com/eligrey/FileSaver.js) and [JSZip](https://github.com/Stuk/jszip) to the project
