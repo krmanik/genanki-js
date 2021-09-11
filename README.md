@@ -14,8 +14,6 @@ Visit page and select `CSV to APKG` from top menu.<br>
 # Set Up a new project from scratch
 1. Download and copy these three files from `dist` folder and add to the project
 ```js
-anki_hash.js    // used for generating id
-db.js           // used for creating global db variable using sql.js
 genanki.js      // for creating and exporting anki package file
 ```
 
