@@ -89,6 +89,10 @@ function changeCode(code) {
             editor.setValue(code5);
             codeTitle.innerHTML = "Add image file";
             break;
+        case "code6":
+            editor.setValue(code6);
+            codeTitle.innerHTML = "Test add tags to notes";
+            break;
     }
 }
 
@@ -264,6 +268,44 @@ fetch('favicon.ico').then(response => {
     p.addMedia(response.blob(), imageFile);
     p.writeToFile('deck.apkg')
 });`;
+
+
+/**
+ * Test add tags to notes
+ */
+var code6 = String.raw`var m = new Model({
+    name: "Basic (and reversed card) with tags",
+    id: "1543634829847",
+    flds: [
+      { name: "Front" },
+      { name: "Back" }
+    ],
+    req: [
+      [ 0, "all", [ 0 ] ],
+      [ 1, "all", [ 1 ] ]
+    ],
+    tmpls: [
+      {
+        name: "Card 1",
+        qfmt: "{{Front}}",
+        afmt: "{{FrontSide}}\n\n<hr id=answer>\n\n{{Back}}",
+      },
+      {
+        name: "Card 2",
+        qfmt: "{{Back}}",
+        afmt: "{{FrontSide}}\n\n<hr id=answer>\n\n{{Front}}",
+      }
+    ],
+  })
+                          
+  var d = new Deck(1276438724678, "Test Deck wit tags")
+  
+  d.addNote(m.note(['this is front', 'this is back'], ['test_tag1', 'test_tag2']))
+  
+  var p = new Package()
+  p.addDeck(d)
+  
+  p.writeToFile('deck.apkg')`;
 
 
 function showSnackbar(msg) {
