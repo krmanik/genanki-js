@@ -87,6 +87,8 @@ Create a note using this model.
 - `guid` string _(optional)_ - a stable, unique identifier for this note. When
   re-importing an updated version of this note, Anki will replace notes with
   matching identifiers. Defaults to a hash of the field values.
+- If you want to add custom `guid` without `tags`: put 2nd parameter as `null` or blank array `[]`
+  Example: `model.note(["front value", "back value"], null, guid)`
 
 ### `Deck`
 
