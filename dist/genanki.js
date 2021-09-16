@@ -365,6 +365,10 @@ class Package {
         const now = new Date
         const models = {}
         const decks = {}
+
+        // AnkiDroid failed to import subdeck, So add a Default deck
+        decks["1"] = {...defaultDeck, id: 1, name: "Default"}
+
         this.decks.forEach(d => {
             d.notes.forEach(n => models[n.model.props.id] = n.model.props)
             decks[d.id] = {
