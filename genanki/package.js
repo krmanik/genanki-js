@@ -60,6 +60,7 @@ class Package {
                 ...defaultDeck,
                 id: d.id,
                 name: d.name,
+                desc: d.desc,
             }
         })
 
