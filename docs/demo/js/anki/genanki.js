@@ -413,8 +413,8 @@ class Package {
                         note.model.props.id,        // mid
                         (+now / 1000) | 0,          // mod
                         -1,                         // usn
-                        tags,                         // tags
-                        note.fields.join('\x1f'),   //flds
+                        tags,                       // tags
+                        note.fields.join('\x1f'),   // flds
                         0,                          // sfld
                     ])
 
