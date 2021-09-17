@@ -2,7 +2,18 @@
 A JavaScript implementation for generating Anki decks in browser. This is fork of [mkanki](https://github.com/nornagon/mkanki).
 
 # QuickStart
-Fork and download this repository. The `sample` folder contains all necessary files to get started.
+Download [genanki](https://github.com/infinyte7/genanki-js/releases) zip file from release pages.
+
+The zip file contains two folder
+
+- `dist` : This folder contains `genanki.js` file. If project already configured with [sql.js](https://github.com/sql-js/sql.js), [FileSaver.js](https://github.com/eligrey/FileSaver.js) and [JSZip](https://github.com/Stuk/jszip) then just add `genanki.js` file to project.
+
+- `sample` : This folder contains latest [sql.js](https://github.com/sql-js/sql.js), [FileSaver.js](https://github.com/eligrey/FileSaver.js), [JSZip](https://github.com/Stuk/jszip) and [genanki.js](https://github.com/infinyte7/genanki-js). It is ready to use folder. 
+
+Alternatively, `genanki.js` can also be loaded from CDN.
+```html
+<script src="https://cdn.jsdelivr.net/gh/infinyte7/genanki-js/dist/genanki.js"></script>
+```
 
 # Documentation
 View [Documentation](https://infinyte7.github.io/genanki-js)
