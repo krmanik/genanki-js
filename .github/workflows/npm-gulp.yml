@@ -1,0 +1,99 @@
+name: Create release for genanki.js
+
+on:
+  workflow_dispatch:  
+  
+env:
+  version: 'v1.0.5'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Build
+      run: |
+        sudo apt install zip wget -q -y     
+
+        # bundle all files in genanki folder to dist, demo and sample folder
+        sudo npm install gulp gulp-concat
+        npm link gulp
+        gulp bundleJs
+
+
+        # add latest jszip to sample folder
+        wget https://raw.githubusercontent.com/Stuk/jszip/master/dist/jszip.min.js \
+         -O sample/js/jszip.min.js
+
+        # add latest FileSaver to sample folder
+        wget https://raw.githubusercontent.com/eligrey/FileSaver.js/master/dist/FileSaver.min.js \
+         -O sample/js/filesaver/FileSaver.min.js
+
+         wget https://raw.githubusercontent.com/eligrey/FileSaver.js/master/dist/FileSaver.min.js.map \
+          -O sample/js/filesaver/FileSaver.min.js.map
+
+        # add latest sql.js to sample folder
+        wget https://github.com/sql-js/sql.js/releases/download/v1.6.1/sql.js \
+         -O sample/js/sql/sql.js
+
+
+        # add latest jszip to demo folder
+        wget https://raw.githubusercontent.com/Stuk/jszip/master/dist/jszip.min.js \
+         -O docs/demo/js/jszip.min.js
+
+        # add latest FileSaver to demp folder
+        wget https://raw.githubusercontent.com/eligrey/FileSaver.js/master/dist/FileSaver.min.js \
+         -O docs/demo/js/filesaver/FileSaver.min.js
+
+         wget https://raw.githubusercontent.com/eligrey/FileSaver.js/master/dist/FileSaver.min.js.map \
+          -O docs/demo/js/filesaver/FileSaver.min.js.map
+
+        # add latest sql.js to demo folder
+        wget https://github.com/sql-js/sql.js/releases/download/v1.6.1/sql.js \
+         -O docs/demo/js/sql/sql.js
+
+
+        # remove node_modules and package.json generated when using gulp
+        rm -rf node_modules
+        rm -rf package-lock.json
+
+        # commit changes
+        git config --global user.name github-actions
+        git config --global user.email github-actions@github.com
+        
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "there are changes";
+          git commit -am "${{ env.version }}"
+          git push
+        else
+          echo "no changes";
+        fi
+        
+        
+        # Create folder for release
+        mkdir genanki-${{ env.version }}
+
+        # copy new files
+        cp -r dist genanki-${{ env.version }}
+        cp -r sample genanki-${{ env.version }}
+
+        zip -r genanki-${{ env.version }}.zip genanki-${{ env.version }}
+        
+    - name: Create Release
+      uses: ncipollo/release-action@v1
+      with:
+        name: genanki-${{ env.version }}
+        bodyFile: 'release.md'
+        tag: ${{ env.version }}
+        artifacts: genanki-${{ env.version }}.zip
+        token: ${{ secrets.GITHUB_TOKEN }}

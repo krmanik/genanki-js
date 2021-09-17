@@ -16,8 +16,12 @@ const jsFiles = [
 
 const bundleJs = () => {
     return src(jsFiles)
+    // bundle all js files in genanki folder in genanki.js file
     .pipe(concat('genanki.js'))
+    // write genanki.js to dist, demo and sample folder
     .pipe(dest('./dist'))
+    .pipe(dest('./docs/demo/js/anki'))
+    .pipe(dest('./sample/js/anki'))
 }
 
 exports.bundleJs = bundleJs;
