@@ -53,6 +53,7 @@ class Model {
             ...props,
             flds: props.flds.map((f, i) => ({ ...defaultField, ord: i, ...f })),
             tmpls: props.tmpls.map((t, i) => ({ ...defaultTemplate, ord: i, name: `Card ${i + 1}`, ...t })),
+            mod: new Date().getTime()
         }
         this.fieldNameToOrd = {}
         this.props.flds.forEach(f => { this.fieldNameToOrd[f.name] = f.ord })
@@ -238,9 +239,10 @@ const defaultDeck = {
 }
 
 class Deck {
-    constructor(id, name) {
+    constructor(id, name, desc="") {
         this.id = id
         this.name = name
+        this.desc = desc
         this.notes = []
     }
 
@@ -375,6 +377,7 @@ class Package {
                 ...defaultDeck,
                 id: d.id,
                 name: d.name,
+                desc: d.desc,
             }
         })
 
