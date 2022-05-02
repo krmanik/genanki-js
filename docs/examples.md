@@ -34,6 +34,7 @@ var d = new Deck(1276438724672, "Test Deck")
 d.addNote(m.note(['this is front', 'this is back']))
 
 var p = new Package()
+p.setSqlJs(SQL)            // global SQL variable from step 2 in setup
 p.addDeck(d)
 
 p.writeToFile('deck.apkg')
@@ -69,6 +70,7 @@ function twoNotes() {
     d.addNote(m.note(['this is test', 'for anki']))
 
     const p = new Package()
+    p.setSqlJs(SQL)            // global SQL variable from step 2 in setup
     p.addDeck(d)
     p.writeToFile('deck.apkg')
 }
@@ -104,6 +106,7 @@ function exampleNotes10() {
     }
 
     const p = new Package()
+    p.setSqlJs(SQL)            // global SQL variable from step 2 in setup
     p.addDeck(d)
     p.writeToFile('deck.apkg')
 }
@@ -141,6 +144,7 @@ function chineseNotes() {
     d.addNote(m.note(["比如", "譬如", "pìrú", "for example, such as"]))
 
     const p = new Package()
+    p.setSqlJs(SQL)            // global SQL variable from step 2 in setup
     p.addDeck(d)
     p.writeToFile('chinese-deck.apkg')
 }
@@ -176,6 +180,7 @@ async function addImage() {
     d.addNote(m.note(['This is front and back side contains image.', '<img src="' + imageFile + '"></img>']))
 
     const p = new Package()
+    p.setSqlJs(SQL)            // global SQL variable from step 2 in setup
     p.addDeck(d)
     
     let blob = await fetch('favicon.ico').then(response => {
@@ -223,8 +228,8 @@ var d = new Deck(1276438724687, "Test Deck with Tags")
 d.addNote(m.note(['this is front', 'this is back'], ['test_tag1', 'test_tag2']))
 
 var p = new Package()
+p.setSqlJs(SQL)            // global SQL variable from step 2 in setup
 p.addDeck(d)
 
 p.writeToFile('deck.apkg')
-
 ```

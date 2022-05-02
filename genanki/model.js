@@ -1,7 +1,7 @@
 const MODEL_STD = 0
 const MODEL_CLOZE = 1
 
-class Model {
+export class Model {
     constructor(props) {
         this.props = {
             ...defaultModel,
@@ -33,7 +33,7 @@ class Model {
     }
 }
 
-class ClozeModel extends Model {
+export class ClozeModel extends Model {
     constructor(props) {
         super({
             type: MODEL_CLOZE,

@@ -1,7 +1,12 @@
-class Package {
+export class Package {
     constructor() {
+        this.db = null;
         this.decks = []
         this.media = []
+    }
+
+    setSqlJs(SQL) {
+        this.db = SQL;
     }
 
     addDeck(deck) {
@@ -17,12 +22,12 @@ class Package {
     }
 
     writeToFile(filename) {
-        var db = new SQL.Database();
+        let db = this.db;
         db.run(APKG_SCHEMA);
 
         this.write(db)
 
-        var zip = new JSZip();
+        let zip = new JSZip();
 
         const data = db.export();
         const buffer = new Uint8Array(data).buffer;
@@ -96,7 +101,7 @@ class Package {
 
         for (const deck of this.decks) {
             for (const note of deck.notes) {
-                var tags = note.tags == null ? '' : note.tags.join(' ')
+                let tags = note.tags == null ? '' : note.tags.join(' ')
                 insert_notes.run(
                     [
                         note.guid,                  // guid
@@ -108,8 +113,8 @@ class Package {
                         0,                          // sfld
                     ])
 
-                var rowID = db.exec("select last_insert_rowid();")
-                var note_id = rowID[0]['values'][0][0];
+                let rowID = db.exec("select last_insert_rowid();")
+                let note_id = rowID[0]['values'][0][0];
 
                 for (const card_ord of note.cards) {
                     insert_cards.run(

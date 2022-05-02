@@ -1,8 +1,8 @@
 {
   "name": "genanki-js",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "A JavaScript implementation for generating Anki decks in browser client side",
-  "main": "genanki.js",
+  "main": "dist/genanki.js",
   "directories": {
     "doc": "docs"
   },
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/infinyte7/genanki-js.git"
+    "url": "git+https://github.com/krmanik/genanki-js.git"
   },
   "keywords": [
     "genanki",
@@ -20,7 +20,17 @@
   "author": "Mani",
   "license": "AGPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/infinyte7/genanki-js/issues"
+    "url": "https://github.com/krmanik/genanki-js/issues"
   },
-  "homepage": "https://github.com/infinyte7/genanki-js#readme"
+  "homepage": "https://github.com/krmanik/genanki-js#readme",
+  "dependencies": {
+    "big-integer": "^1.6.51",
+    "file-saver": "^2.0.5",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify": "^3.1.0",
+    "js-sha256": "^0.9.0",
+    "jszip": "^3.9.1",
+    "sql.js": "^1.6.2"
+  }
 }

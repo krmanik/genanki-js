@@ -1,4 +1,4 @@
-class Note {
+export class Note {
     constructor(model, fields, tags = null, guid = null) {
         this.model = model
         this.fields = fields

@@ -4,7 +4,7 @@
 * @license The MIT License
 */
 
-const APKG_SCHEMA = `
+export const APKG_SCHEMA = `
 PRAGMA foreign_keys=OFF;
 BEGIN TRANSACTION;
 

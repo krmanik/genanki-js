@@ -1,4 +1,4 @@
-const defaultModel = {
+export const defaultModel = {
     sortf: 0, // sort field
     did: 1, // deck id
     latexPre: `\\documentclass[12pt]{article}
@@ -30,7 +30,7 @@ const defaultModel = {
     tags: [],
 }
 
-const defaultField = {
+export const defaultField = {
     name: "",
     ord: null,
     sticky: false,
@@ -40,7 +40,7 @@ const defaultField = {
     media: [],
 }
 
-const defaultTemplate = {
+export const defaultTemplate = {
     name: "",
     ord: null,
     qfmt: "",
@@ -55,7 +55,7 @@ const NEW_CARDS_DISTRIBUTE = 0
 const NEW_CARDS_LAST = 1
 const NEW_CARDS_FIRST = 2
 
-const defaultConf = {
+export const defaultConf = {
     // review options
     'activeDecks': [1],
     'curDeck': 1,
@@ -80,7 +80,7 @@ const NEW_CARDS_DUE = 1
 
 const STARTING_FACTOR = 2500
 
-const defaultDeckConf = {
+export const defaultDeckConf = {
     'name': "Default",
     'new': {
         'delays': [1, 10],
@@ -119,7 +119,7 @@ const defaultDeckConf = {
     'usn': 0,
 }
 
-const defaultDeck = {
+export const defaultDeck = {
     newToday: [0, 0], // currentDay, count
     revToday: [0, 0],
     lrnToday: [0, 0],
