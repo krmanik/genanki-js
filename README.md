@@ -2,7 +2,7 @@
 A JavaScript implementation for generating Anki decks in browser. This is fork of [mkanki](https://github.com/nornagon/mkanki).
 
 # QuickStart
-Download [genanki](https://github.com/infinyte7/genanki-js/releases) zip file from release pages.
+Download [genanki](https://github.com/krmanik/genanki-js/releases) zip file from release pages.
 
 The zip file contains two folder
 
@@ -12,15 +12,15 @@ The zip file contains two folder
 
 Alternatively, `genanki.js` can also be loaded from CDN.
 ```html
-<script src="https://cdn.jsdelivr.net/gh/infinyte7/genanki-js/dist/genanki.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/krmanik/genanki-js/dist/genanki.js"></script>
 ```
 
 # Documentation
-View [Documentation](https://infinyte7.github.io/genanki-js)
+View [Documentation](https://krmanik.github.io/genanki-js/#/)
 
 # CSV/TSV to Anki Package
 Visit page and select `CSV to APKG` from top menu.<br>
-[CSV to APKG](https://infinyte7.github.io/genanki-js/demo/index.html#)
+[CSV to APKG](https://krmanik.github.io/genanki-js/demo/index.html#)
 
 # Set Up a new project from scratch
 1. Download `genanki.js` from `dist` folder and add to the project
@@ -61,7 +61,7 @@ initSqlJs(config).then(function (sql) {
 
 4. Now use following `Examples` to generate and export decks.
 
-*View more examples here [Examples](https://infinyte7.github.io/genanki-js/demo/index.html)*
+*View more examples here [Examples](https://krmanik.github.io/genanki-js/#/examples)*
 
 # Examples
 ```js
@@ -101,9 +101,9 @@ p.writeToFile('deck.apkg')
 ```
 
 # License
-### [genanki-js]()
+### [genanki-js](https://github.com/krmanik/genanki-js)
 [GNU Affero General Public License v3](https://opensource.org/licenses/AGPL-3.0)
 <br>Copyright (c) 2021 Mani
 
 ## Other Third Party Licenses
-[License.md](https://github.com/infinyte7/genanki-js/blob/master/License.md)
+[License.md](https://github.com/krmanik/genanki-js/blob/master/License.md)
