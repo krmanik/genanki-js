@@ -9,7 +9,7 @@
  * @license The MIT License
  * 
  * 
- * [genanki-js]{@link https://github.com/infinyte7/genanki-js}
+ * [genanki-js]{@link https://github.com/krmanik/genanki-js}
  * @copyright Copyright (c) 2021 Mani
  * @license AGPL-3.0 License
  */

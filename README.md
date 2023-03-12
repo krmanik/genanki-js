@@ -8,7 +8,7 @@ The zip file contains two folder
 
 - `dist` : This folder contains `genanki.js` file. If project already configured with [sql.js](https://github.com/sql-js/sql.js), [FileSaver.js](https://github.com/eligrey/FileSaver.js) and [JSZip](https://github.com/Stuk/jszip) then just add `genanki.js` file to project.
 
-- `sample` : This folder contains latest [sql.js](https://github.com/sql-js/sql.js), [FileSaver.js](https://github.com/eligrey/FileSaver.js), [JSZip](https://github.com/Stuk/jszip) and [genanki.js](https://github.com/infinyte7/genanki-js). It is ready to use folder. 
+- `sample` : This folder contains latest [sql.js](https://github.com/sql-js/sql.js), [FileSaver.js](https://github.com/eligrey/FileSaver.js), [JSZip](https://github.com/Stuk/jszip) and [genanki.js](https://github.com/krmanik/genanki-js). It is ready to use folder. 
 
 Alternatively, `genanki.js` can also be loaded from CDN.
 ```html

@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/infinyte7/genanki-js.git"
+    "url": "git+https://github.com/krmanik/genanki-js.git"
   },
   "keywords": [
     "genanki",
@@ -20,7 +20,7 @@
   "author": "Mani",
   "license": "AGPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/infinyte7/genanki-js/issues"
+    "url": "https://github.com/krmanik/genanki-js/issues"
   },
-  "homepage": "https://github.com/infinyte7/genanki-js#readme"
+  "homepage": "https://github.com/krmanik/genanki-js#readme"
 }
